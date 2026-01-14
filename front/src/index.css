@@ -1,0 +1,342 @@
+/* ===== Premium Medical AI Design System ===== */
+
+/* Import modern Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* Primary Gradient Colors - Medical Teal & Blue Theme */
+  --primary-gradient: linear-gradient(135deg, #0d9488 0%, #0891b2 100%);
+  --primary-gradient-hover: linear-gradient(135deg, #0f766e 0%, #0e7490 100%);
+  --accent-gradient: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+  --accent-gradient-hover: linear-gradient(135deg, #059669 0%, #10b981 100%);
+
+  /* Core Colors - Calming Medical Palette */
+  --primary: #0d9488;
+  --primary-dark: #0f766e;
+  --primary-light: #14b8a6;
+  --secondary: #0891b2;
+  --secondary-light: #22d3ee;
+  --accent: #10b981;
+  --accent-dark: #059669;
+  --accent-light: #34d399;
+
+  /* Neutral Colors */
+  --bg-primary: #f0fdfa;
+  --bg-secondary: #e6fffa;
+  --bg-tertiary: #ccfbf1;
+  --bg-light: #f8fafc;
+  --bg-card: rgba(255, 255, 255, 0.95);
+  --bg-card-dark: rgba(15, 118, 110, 0.05);
+
+  /* Text Colors */
+  --text-primary: #134e4a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --text-light: #f8fafc;
+
+  /* Glassmorphism - Medical Theme */
+  --glass-bg: rgba(255, 255, 255, 0.92);
+  --glass-border: rgba(13, 148, 136, 0.15);
+  --glass-shadow: 0 8px 32px rgba(13, 148, 136, 0.12);
+
+  /* Shadows - Teal Tinted */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(13, 148, 136, 0.08);
+  --shadow-lg: 0 10px 40px rgba(13, 148, 136, 0.15);
+  --shadow-xl: 0 20px 60px rgba(13, 148, 136, 0.18);
+  --shadow-glow: 0 0 30px rgba(13, 148, 136, 0.3);
+  --shadow-accent-glow: 0 0 30px rgba(16, 185, 129, 0.3);
+
+  /* Borders */
+  --border-light: rgba(13, 148, 136, 0.12);
+  --border-medium: rgba(13, 148, 136, 0.22);
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* Typography */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--text-primary);
+  background: linear-gradient(160deg, #f0fdfa 0%, #e0f2fe 50%, #ecfeff 100%);
+  background-attachment: fixed;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: linear-gradient(160deg, #f0fdfa 0%, #e0f2fe 50%, #ecfeff 100%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+/* Animated background overlay - Subtle Medical Pattern */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 15% 85%, rgba(13, 148, 136, 0.06) 0%, transparent 45%),
+    radial-gradient(circle at 85% 15%, rgba(8, 145, 178, 0.06) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.04) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+  animation: backgroundPulse 20s ease-in-out infinite;
+}
+
+@keyframes backgroundPulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+}
+
+button {
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+button:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:focus-visible {
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.4);
+}
+
+input {
+  font-family: inherit;
+  transition: all var(--transition-normal);
+}
+
+input:focus-visible {
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.25);
+}
+
+/* Remove default focus outlines and add custom ones */
+:focus {
+  outline: none;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(13, 148, 136, 0.04);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #0d9488 0%, #0891b2 100%);
+  border-radius: 10px;
+  transition: all var(--transition-normal);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #0f766e 0%, #0e7490 100%);
+  box-shadow: 0 0 10px rgba(13, 148, 136, 0.4);
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(13, 148, 136, 0.2);
+  color: var(--text-primary);
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(13, 148, 136, 0.25);
+  }
+
+  50% {
+    box-shadow: 0 0 40px rgba(13, 148, 136, 0.5);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Utility classes */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.gradient-text {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glow-effect {
+  animation: glow 3s ease-in-out infinite;
+}

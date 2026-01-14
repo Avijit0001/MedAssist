@@ -1,0 +1,358 @@
+.chat-interface {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+/* ===== Chat Header - Full Width Integrated ===== */
+.chat-header {
+  background: linear-gradient(135deg, #0d9488 0%, #0891b2 100%);
+  color: white;
+  padding: 18px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.chat-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 90% 50%, rgba(255, 255, 255, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 10% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.chat-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.report-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.report-select {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  background-color: white;
+  cursor: pointer;
+  outline: none;
+  font-weight: 500;
+  transition: all var(--transition-normal);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.report-select:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.report-select:focus {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+.action-btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+.download-btn {
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--primary);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.download-btn:hover {
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+}
+
+.chat-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.chat-title h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.chat-title svg {
+  color: white;
+  width: 28px;
+  height: 28px;
+}
+
+.chat-subtitle {
+  font-size: 0.9rem;
+  margin: 4px 0 0 0;
+  opacity: 0.85;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Responsive Adjustments ===== */
+@media (max-width: 960px) {
+  .chat-interface {
+    max-width: 100%;
+    height: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .chat-header {
+    padding: 16px 20px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .chat-title {
+    justify-content: center;
+  }
+
+  .chat-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .report-group,
+  .download-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .report-select {
+    flex: 1;
+  }
+
+  .chat-title h1 {
+    font-size: 1.3rem;
+  }
+}
+
+/* ===== Report Submission Modal ===== */
+.report-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: fadeIn 0.25s ease-out;
+}
+
+.report-modal {
+  background: white;
+  border-radius: 20px;
+  width: 92%;
+  max-width: 520px;
+  box-shadow: 0 25px 60px rgba(13, 148, 136, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: slideUp 0.35s ease-out;
+}
+
+.modal-header {
+  padding: 22px 28px;
+  border-bottom: 1px solid rgba(13, 148, 136, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(13, 148, 136, 0.02);
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.close-modal-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  padding: 4px;
+  line-height: 1;
+  border-radius: 8px;
+  transition: all var(--transition-normal);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-modal-btn:hover {
+  background: rgba(13, 148, 136, 0.08);
+  color: var(--primary);
+}
+
+.modal-body {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.report-preview-container {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(135deg, rgba(13, 148, 136, 0.04) 0%, rgba(8, 145, 178, 0.03) 100%);
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed rgba(13, 148, 136, 0.2);
+  transition: all var(--transition-normal);
+}
+
+.report-preview-container:hover {
+  border-color: var(--primary);
+  background: linear-gradient(135deg, rgba(13, 148, 136, 0.06) 0%, rgba(8, 145, 178, 0.05) 100%);
+}
+
+.report-preview-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.report-info {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  background: linear-gradient(135deg, rgba(13, 148, 136, 0.06) 0%, rgba(8, 145, 178, 0.04) 100%);
+  padding: 14px 18px;
+  border-radius: 12px;
+  border-left: 4px solid var(--primary);
+  line-height: 1.6;
+}
+
+.report-text-input {
+  width: 100%;
+  padding: 16px 18px;
+  border: 2px solid rgba(13, 148, 136, 0.15);
+  border-radius: 14px;
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all var(--transition-normal);
+  background: white;
+}
+
+.report-text-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.1);
+}
+
+.report-text-input::placeholder {
+  color: var(--text-muted);
+}
+
+.modal-footer {
+  padding: 20px 28px;
+  background: rgba(13, 148, 136, 0.02);
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  border-top: 1px solid rgba(13, 148, 136, 0.1);
+}
+
+.modal-btn {
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all var(--transition-normal);
+  font-size: 0.95rem;
+}
+
+.cancel-btn {
+  background: white;
+  border: 2px solid rgba(13, 148, 136, 0.15);
+  color: var(--text-secondary);
+}
+
+.cancel-btn:hover {
+  background: rgba(13, 148, 136, 0.04);
+  border-color: rgba(13, 148, 136, 0.25);
+  color: var(--text-primary);
+}
+
+.send-report-btn {
+  background: var(--primary-gradient);
+  color: white;
+  box-shadow: 0 4px 15px rgba(13, 148, 136, 0.25);
+}
+
+.send-report-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(13, 148, 136, 0.35);
+}
