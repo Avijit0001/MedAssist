@@ -8,7 +8,7 @@
 [![React](https://img.shields.io/badge/React-19.1+-blue.svg)](https://react.dev/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-green.svg)](https://fastapi.tiangolo.com/)
 
-*An intelligent healthcare assistant platform powered by Google Gemini AI*
+*An intelligent healthcare assistant platform powered by LLM*
 
 [Features](#features) • [Tech Stack](#tech-stack) • [Getting Started](#getting-started) • [API Documentation](#api-documentation) • [Contributing](#contributing)
 
@@ -420,3 +420,4 @@ MedAssist is an AI-powered medical consultation assistant that demonstrates the 
 Made with ❤️ By Avijit0001
 
 </div>
+
